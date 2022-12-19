@@ -4,7 +4,7 @@ export const resumeReducer = (
   state = {
     loading: false,
     error: null,
-    data: {},
+    data: null,
   },
   action: any
 ) => {
@@ -12,10 +12,10 @@ export const resumeReducer = (
     case RESUME.REQUEST:
       return { ...state, loading: action.payload.loading };
     case RESUME.SUCCESS:
-      return { ...state, loading: false, resumeData: action.payload.data };
+      return { ...state, loading: false, data: action.payload.data };
     case RESUME.FAIL:
       return { ...state, loading: false, error: action.payload.error };
     default:
-      break;
+      return state;
   }
 };

@@ -24,7 +24,9 @@ export default async function handler(req: any, res: any) {
 
   // const result = await request(apiContent);
   if (data) {
-    res.status(200).json(data);
+    setTimeout(() => {
+      res.status(200).json(data);
+    }, 1000);
   } else {
     res.status(400).json({ error: 'Bad request' });
   }

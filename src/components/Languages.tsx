@@ -3,16 +3,18 @@ import React from 'react';
 // import {connect} from 'react-redux';
 import { Badge, Box, Flex, Title } from '@mantine/core';
 
-export const Languages = () => {
+export const Languages = ({ languages }: { languages: string[] }) => {
   return (
     <Box>
       <Title order={3} weight={100} align={'center'} m={16}>
         Languages
       </Title>
       <Flex gap={16}>
-        <Badge size='lg'>Language 1</Badge>
-        <Badge size='lg'>Language 2</Badge>
-        <Badge size='lg'>Language 3</Badge>
+        {languages.map((ele: string) => (
+          <Badge size='lg' key={ele}>
+            {ele}
+          </Badge>
+        ))}
       </Flex>
     </Box>
   );

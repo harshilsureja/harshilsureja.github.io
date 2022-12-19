@@ -5,10 +5,10 @@ import { MantineProvider, useMantineTheme } from '@mantine/core';
 import { wrapper } from '../src/store/store';
 
 function App({ Component, pageProps }: AppProps) {
-  const theme = useMantineTheme();
-  const swatches: any = Object.keys(theme.colors).filter((color) => {
-    return color != 'dark' && color != 'gray' && theme.colors[color][5];
-  });
+  // const theme = useMantineTheme();
+  // const swatches: any = Object.keys(theme.colors).filter((color) => {
+  //   return color != 'dark' && color != 'gray' && theme.colors[color][5];
+  // });
   return (
     <>
       <Head>
@@ -22,9 +22,9 @@ function App({ Component, pageProps }: AppProps) {
         withGlobalStyles
         withNormalizeCSS
         theme={{
-          primaryColor: swatches[Math.floor(Math.random() * swatches.length)],
+          // primaryColor: swatches[Math.floor(Math.random() * swatches.length)],
           /** Put your mantine theme override here */
-          colorScheme: 'light',
+          colorScheme: 'dark',
         }}
       >
         <Component {...pageProps} />

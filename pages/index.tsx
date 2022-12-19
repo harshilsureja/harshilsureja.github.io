@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Inter } from '@next/font/google';
 import styles from '../styles/Home.module.css';
 import About from '../src/components/About';
-import { Box, Flex } from '@mantine/core';
+import { Box, Flex, Loader, LoadingOverlay } from '@mantine/core';
 import Hero from '../src/components/Hero';
 import Education from '../src/components/Education';
 import WorkExperience from '../src/components/WorkExperience';
@@ -14,17 +14,20 @@ import Languages from '../src/components/Languages';
 import Quote from '../src/components/Quote';
 import Contact from '../src/components/Contact';
 import { fetchResume } from '../src/store/actions/resume.action';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
-function Home(props: any) {
-  const resumeData = props.resumeData;
-  const data = fetchResume();
+function Home() {
+  const dispatch = useDispatch();
+  const ResumeData = useSelector((state: any) => state.resumeReducer);
+  const { loading, error, data } = ResumeData;
+
   useEffect(() => {
-    console.log(resumeData);
-  }, [props.resumeData]);
+    dispatch(fetchResume());
+    console.log(ResumeData);
+  }, []);
 
   return (
     <>
@@ -36,27 +39,35 @@ function Home(props: any) {
       </Head>
       {/* className={inter.className} */}
       <Flex justify={'center'} align={'center'} direction={'column'} gap={32}>
-        <Hero />
-        <About />
-        <Education />
-        <WorkExperience />
-        <PersonalProjects />
-        <TechSkills />
-        <OtherSkills />
-        <Languages />
-        <Quote />
-        {/* <Contact /> */}
+        {/* {loading && <Loader />} */}
+        <LoadingOverlay visible={loading} overlayBlur={4} />
+        {data && (
+          <>
+            <Hero />
+            <About />
+            <Education />
+            <WorkExperience />
+            <PersonalProjects />
+            <TechSkills techSkills={data.techSkill} />
+            <OtherSkills otherSkills={data.otherSkill} />
+            <Languages languages={data.languages} />
+            {/* <Contact /> */}
+            <Quote />
+          </>
+        )}
       </Flex>
     </>
   );
 }
 
-const mapStateToProps = (state: any) => ({
-  resumeData: state.resumeData,
-});
+// const mapStateToProps = (state: any) => ({
+//   resumeData: state.resumeData,
+// });
 
-const mapDispatchToProps = (dispatch: any) => ({
-  fetchResume: () => dispatch(fetchResume()),
-});
+// const mapDispatchToProps = (dispatch: any) => ({
+//   fetchResume: () => dispatch(fetchResume()),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+// export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+export default Home;

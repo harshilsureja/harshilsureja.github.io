@@ -8,7 +8,7 @@ const middleware = [thunk];
 const makeStore = () =>
   configureStore({
     reducer: rootReducer,
-    middleware,
+    // middleware,
     devTools: true,
   });
 
