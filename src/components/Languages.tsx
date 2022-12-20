@@ -1,22 +1,20 @@
-// import PropTypes from 'prop-types';
 import React from 'react';
-// import {connect} from 'react-redux';
-import { Badge, Box, Flex, Title } from '@mantine/core';
+import { Badge, Flex, Title } from '@mantine/core';
 
 export const Languages = ({ languages }: { languages: string[] }) => {
   return (
-    <Box>
-      <Title order={3} weight={100} align={'center'} m={16}>
+    <Flex gap={16} direction='column' align={'center'}>
+      <Title order={3} weight={100}>
         Languages
       </Title>
-      <Flex gap={16}>
+      <Flex gap={16} mb={8}>
         {languages.map((ele: string) => (
           <Badge size='lg' key={ele}>
             {ele}
           </Badge>
         ))}
       </Flex>
-    </Box>
+    </Flex>
   );
 };
 

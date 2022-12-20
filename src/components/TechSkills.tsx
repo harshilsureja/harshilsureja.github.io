@@ -1,22 +1,43 @@
-// import PropTypes from 'prop-types';
 import React from 'react';
-// import {connect} from 'react-redux';
-import { Badge, Box, Flex, Title } from '@mantine/core';
+import { Badge, Flex, Title } from '@mantine/core';
 
 export const TechSkills = ({ techSkills }: any) => {
   return (
-    <Box>
-      <Title order={3} weight={100} align={'center'} m={16}>
+    <Flex gap={16} direction='column' align={'center'}>
+      <Title order={3} weight={100} m={16}>
         Tech skills
       </Title>
-      <Flex gap={16}>
-        {/* {techSkills.map((ele: string) => (
+      <Title order={6} c='dimmed'>
+        Frontend
+      </Title>
+      <Flex gap={16} mb={8}>
+        {techSkills.frontEnd.map((ele: string) => (
           <Badge size='lg' key={ele}>
             {ele}
           </Badge>
-        ))} */}
+        ))}
       </Flex>
-    </Box>
+      <Title order={6} c='dimmed'>
+        Backend
+      </Title>
+      <Flex gap={16} mb={8}>
+        {techSkills.backEnd.map((ele: string) => (
+          <Badge size='lg' key={ele}>
+            {ele}
+          </Badge>
+        ))}
+      </Flex>
+      <Title order={6} c='dimmed'>
+        Database
+      </Title>
+      <Flex gap={16} mb={8}>
+        {techSkills.database.map((ele: string) => (
+          <Badge size='lg' key={ele}>
+            {ele}
+          </Badge>
+        ))}
+      </Flex>
+    </Flex>
   );
 };
 

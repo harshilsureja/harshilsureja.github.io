@@ -1,10 +1,74 @@
-// import PropTypes from 'prop-types';
 import React from 'react';
-// import {connect} from 'react-redux';
-import { Box, Stack } from '@mantine/core';
+import { ActionIcon, Anchor, Box, Flex, Text, Title } from '@mantine/core';
+import {
+  IconAt,
+  IconBrandLinkedin,
+  IconBrandTelegram,
+  IconBrandWhatsapp,
+  IconMail,
+  IconPhone,
+  IconSettings,
+} from '@tabler/icons';
 
-export const Contact = () => {
-  return <Box>{/* <FaqWithHeader /> */}</Box>;
+enum CONTACT_LIST {
+  Phone = 'IconPhone',
+  Email = 'IconMail',
+  LinkedIn = 'IconBrandLinkedin',
+  WhatsApp = 'IconBrandWhatsapp',
+  Telegram = 'IconBrandTelegram',
+}
+
+interface IContactDetail {
+  platform: string;
+  text: string;
+  link: string;
+}
+
+export const Contact = ({ contactDetails }: IContactDetail[]) => {
+  console.log(contactDetails);
+  return (
+    <Flex gap={16} direction='column' align={'center'}>
+      <Title order={3} weight={100}>
+        Contact
+      </Title>
+      <Flex gap={12 * 4} align={'center'}>
+        {contactDetails.map((ele: any, i: number) => {
+          const Icon = CONTACT_LIST[ele.platform];
+          return (
+            <Flex key={i} w={200}>
+              <ActionIcon
+                size={'xl'}
+                radius='md'
+                variant='light'
+                color={`
+              sx={(theme: any) => ({
+                color: theme.colors[5],
+              })}
+              `}
+                mr='md'
+              >
+                <Icon size={16} />
+                {/* <IconPhone size={16} />
+              <IconMail size={16} />
+              <IconBrandLinkedin size={16} />
+              <IconBrandWhatsapp size={16} />
+              <IconBrandTelegram size={16} /> */}
+              </ActionIcon>
+              <Box>
+                <Text size='xs' c={'dimmed'}>
+                  {ele.platform}
+                </Text>
+                <Text>
+                  <Anchor href={ele.link}>{ele.text}</Anchor>
+                </Text>
+              </Box>
+            </Flex>
+          );
+        })}
+      </Flex>
+      {/* {contactDetails} */}
+    </Flex>
+  );
 };
 
 export default Contact;
