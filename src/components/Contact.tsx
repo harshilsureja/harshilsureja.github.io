@@ -19,12 +19,16 @@ enum CONTACT_LIST {
 }
 
 interface IContactDetail {
-  platform: string;
+  platform: CONTACT_LIST;
   text: string;
   link: string;
 }
 
-export const Contact = ({ contactDetails }: IContactDetail[]) => {
+export const Contact = ({
+  contactDetails,
+}: {
+  contactDetails: IContactDetail[];
+}) => {
   console.log(contactDetails);
   return (
     <Flex gap={16} direction='column' align={'center'}>
@@ -32,8 +36,8 @@ export const Contact = ({ contactDetails }: IContactDetail[]) => {
         Contact
       </Title>
       <Flex gap={12 * 4} align={'center'}>
-        {contactDetails.map((ele: any, i: number) => {
-          const Icon = CONTACT_LIST[ele.platform];
+        {contactDetails.map((ele: IContactDetail, i: number) => {
+          const Icon = CONTACT_LIST['Email'];
           return (
             <Flex key={i} w={200}>
               <ActionIcon
