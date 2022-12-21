@@ -1,9 +1,9 @@
 import React from 'react';
-import { Blockquote } from '@mantine/core';
+import { Blockquote, Flex } from '@mantine/core';
 
 export const Quote = () => {
   return (
-    <Blockquote cite='— Harshil Sureja'>
+    <Blockquote color={''} cite='— Harshil Sureja'>
       {"Problem doesn't exist without solution."}
     </Blockquote>
   );

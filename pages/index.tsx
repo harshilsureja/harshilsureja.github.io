@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { Inter } from '@next/font/google';
 import styles from '../styles/Home.module.css';
 import About from '../src/components/About';
-import { Box, Flex, Loader, LoadingOverlay } from '@mantine/core';
+import { Box, Flex, Loader, LoadingOverlay, Image } from '@mantine/core';
 import Hero from '../src/components/Hero';
 import Education from '../src/components/Education';
 import WorkExperience from '../src/components/WorkExperience';
@@ -38,7 +37,13 @@ function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       {/* className={inter.className} */}
-      <Flex justify={'center'} align={'center'} direction={'column'} gap={64}>
+      <Flex
+        justify={'center'}
+        align={'center'}
+        direction={'column'}
+        gap={64}
+        p={16}
+      >
         {/* {loading && <Loader />} */}
         <LoadingOverlay visible={loading} overlayBlur={4} />
         {data && (

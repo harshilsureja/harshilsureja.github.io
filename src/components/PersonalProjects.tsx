@@ -1,5 +1,13 @@
 import React from 'react';
-import { Anchor, Badge, Flex, Text, Timeline, Title } from '@mantine/core';
+import {
+  Anchor,
+  Badge,
+  Code,
+  Flex,
+  Text,
+  Timeline,
+  Title,
+} from '@mantine/core';
 
 export const PersonalProjects = ({ personalProjects }: any) => {
   return (
@@ -8,7 +16,7 @@ export const PersonalProjects = ({ personalProjects }: any) => {
         Personal projects
       </Title>
       <Title order={6} c='dimmed'>
-        {personalProjects.tagLine}
+        <Code>{personalProjects.tagLine}</Code>
       </Title>
       <Timeline active={4} bulletSize={16} lineWidth={4}>
         {personalProjects.projects.map((ele: any, i: number) => (

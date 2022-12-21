@@ -1,25 +1,33 @@
 import React from 'react';
-import { ActionIcon, Anchor, Box, Flex, Text, Title } from '@mantine/core';
 import {
-  IconAt,
+  ActionIcon,
+  Anchor,
+  Box,
+  Card,
+  Flex,
+  Grid,
+  Text,
+  Title,
+} from '@mantine/core';
+import {
   IconBrandLinkedin,
   IconBrandTelegram,
   IconBrandWhatsapp,
   IconMail,
   IconPhone,
-  IconSettings,
 } from '@tabler/icons';
+import { Stain } from './Stain';
 
-enum CONTACT_LIST {
-  Phone = 'IconPhone',
-  Email = 'IconMail',
-  LinkedIn = 'IconBrandLinkedin',
-  WhatsApp = 'IconBrandWhatsapp',
-  Telegram = 'IconBrandTelegram',
-}
+const contactList = {
+  Phone: IconPhone,
+  Email: IconMail,
+  LinkedIn: IconBrandLinkedin,
+  WhatsApp: IconBrandWhatsapp,
+  Telegram: IconBrandTelegram,
+};
 
 interface IContactDetail {
-  platform: CONTACT_LIST;
+  platform: keyof typeof contactList;
   text: string;
   link: string;
 }
@@ -29,48 +37,64 @@ export const Contact = ({
 }: {
   contactDetails: IContactDetail[];
 }) => {
-  console.log(contactDetails);
   return (
-    <Flex gap={16} direction='column' align={'center'}>
+    <Flex
+      gap={16}
+      direction='column'
+      align={'center'}
+      style={{ position: 'relative' }}
+    >
+      <Stain
+        w={200}
+        h={150}
+        opacity={1}
+        blur={16}
+        radius={'50%'}
+        transform={['30%', '50%']}
+        variant={'backgroundBlue'}
+      />
       <Title order={3} weight={100}>
         Contact
       </Title>
-      <Flex gap={12 * 4} align={'center'}>
+      <Grid justify={'center'} align={'center'} gutter={16}>
         {contactDetails.map((ele: IContactDetail, i: number) => {
-          const Icon = CONTACT_LIST['Email'];
+          const Icon = contactList[ele.platform];
           return (
-            <Flex key={i} w={200}>
-              <ActionIcon
-                size={'xl'}
-                radius='md'
-                variant='light'
-                color={`
-              sx={(theme: any) => ({
-                color: theme.colors[5],
-              })}
-              `}
-                mr='md'
+            <Grid.Col key={i} w={16 * 11} span={4}>
+              <Card
+                shadow={''}
+                radius={'md'}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  // boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+                  backdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                }}
               >
-                <Icon size={16} />
-                {/* <IconPhone size={16} />
-              <IconMail size={16} />
-              <IconBrandLinkedin size={16} />
-              <IconBrandWhatsapp size={16} />
-              <IconBrandTelegram size={16} /> */}
-              </ActionIcon>
-              <Box>
-                <Text size='xs' c={'dimmed'}>
-                  {ele.platform}
-                </Text>
-                <Text>
-                  <Anchor href={ele.link}>{ele.text}</Anchor>
-                </Text>
-              </Box>
-            </Flex>
+                <Flex>
+                  <ActionIcon
+                    size={'xl'}
+                    radius='md'
+                    variant='light'
+                    color=''
+                    mr='md'
+                  >
+                    <Icon size={24} />
+                  </ActionIcon>
+                  <Box>
+                    <Text size='xs' c={'dimmed'}>
+                      {ele.platform}
+                    </Text>
+                    <Text>
+                      <Anchor href={ele.link}>{ele.text}</Anchor>
+                    </Text>
+                  </Box>
+                </Flex>
+              </Card>
+            </Grid.Col>
           );
         })}
-      </Flex>
-      {/* {contactDetails} */}
+      </Grid>
     </Flex>
   );
 };

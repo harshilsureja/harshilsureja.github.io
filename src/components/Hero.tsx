@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Flex, Text, Title, Image, Badge } from '@mantine/core';
+// import { Stain } from './stain';
 
 export const Hero = ({ personalDetails }: any) => {
   console.log(personalDetails);
@@ -8,13 +9,25 @@ export const Hero = ({ personalDetails }: any) => {
       {/* <Title order={3} weight={100}>
         Home
       </Title> */}
-      <Flex gap={16 * 16} direction={'row'} align={'center'}>
+      <Flex
+        gap={16 * 16}
+        direction={'row'}
+        align={'center'}
+        style={{ position: 'relative' }}
+      >
         <Box>
           <Text color='dimmed' size={'md'}>
             Namaskaram 🙏🏻
           </Text>
           <Title order={1}>
-            {`I'm`} {personalDetails.name}
+            {`I'm `}
+            <Text
+              variant='gradient'
+              gradient={{ from: 'orange', to: 'yellow', deg: 45 }}
+              span
+            >
+              {personalDetails.name}
+            </Text>
           </Title>
           <Badge size='xl' my={8}>
             {personalDetails.profile}
