@@ -19,7 +19,7 @@ import { useEffect } from 'react';
 const inter = Inter({ subsets: ['latin'] });
 
 function Home() {
-  const dispatch = useDispatch();
+  const dispatch: any = useDispatch();
   const ResumeData = useSelector((state: any) => state.resumeReducer);
   const { loading, error, data } = ResumeData;
 
