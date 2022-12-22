@@ -15,7 +15,17 @@ export const Stain = ({ blur, radius, transform, variant, ...props }: any) => {
       sx={(theme: any) => {
         const colorArray = theme.colors[theme.primaryColor];
         return {
-          background: stains.backgroundBlue,
+          background: `conic-gradient(
+    ${colorArray[5]} 0deg,
+    ${colorArray[5]} 45deg,
+    transparent 90deg,
+    transparent 135deg,
+    transparent 180deg,
+    transparent 225deg,
+    ${colorArray[5]} 270deg,
+    transparent 315deg,
+    transparent 360deg
+    )`,
         };
       }}
     ></Box>

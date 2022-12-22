@@ -25,7 +25,6 @@ function Home() {
 
   useEffect(() => {
     dispatch(fetchResume());
-    console.log(ResumeData);
   }, []);
 
   return (

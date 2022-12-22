@@ -8,6 +8,7 @@ import {
   Grid,
   Text,
   Title,
+  useMantineTheme,
 } from '@mantine/core';
 import {
   IconBrandLinkedin,
@@ -37,6 +38,7 @@ export const Contact = ({
 }: {
   contactDetails: IContactDetail[];
 }) => {
+  const theme = useMantineTheme();
   return (
     <Flex
       gap={16}
@@ -45,9 +47,10 @@ export const Contact = ({
       style={{ position: 'relative' }}
     >
       <Stain
-        w={200}
+        w={250}
         h={150}
-        opacity={1}
+        ml={32}
+        opacity={0.5}
         blur={16}
         radius={'50%'}
         transform={['30%', '50%']}
@@ -65,7 +68,12 @@ export const Contact = ({
                 shadow={''}
                 radius={'md'}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.2)',
+                  backgroundColor:
+                    theme.colorScheme === 'dark'
+                      ? `fade(${theme.colors.dark[6]},0.2)`
+                      : `fade(${theme.colors.gray[0]},0.2)`,
+                  background: 0.2,
+                  // background: 'rgba(255, 255, 255, 0.2)',
                   // boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
                   backdropFilter: 'blur(16px)',
                   border: '1px solid rgba(255, 255, 255, 0.3)',
