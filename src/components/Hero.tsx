@@ -113,7 +113,7 @@ export const Hero = ({ personalDetails }: any) => {
         <Box>
           <Image
             src={personalDetails.profileImage}
-            opacity={0.1}
+            // opacity={0.1}
             alt='profile image'
             width={250}
             height={250}
