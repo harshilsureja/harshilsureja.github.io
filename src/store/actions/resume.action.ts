@@ -1,5 +1,6 @@
 import request from '../../utils/request';
 import { RESUME } from '../constants/resume.constant';
+import resumeData from '../../data/harshil-sureja-resume-data';
 
 export const fetchResume =
   () =>
@@ -15,7 +16,8 @@ export const fetchResume =
       method: 'GET',
       url: `/api/getResume/`,
     };
-    const res = await request(apiRequest);
+    // const res = await request(apiRequest);
+    const res = resumeData.data;
 
     if (res.error) {
       dispatch({

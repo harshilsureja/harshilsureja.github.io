@@ -13,7 +13,7 @@
 // }
 
 import request from '../../src/utils/request';
-import resumeData from './harshil-sureja-resume-data';
+import resumeData from '../../src/data/harshil-sureja-resume-data';
 
 export default async function handler(req: any, res: any) {
   const { data } = resumeData;
