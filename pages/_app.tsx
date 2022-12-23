@@ -5,6 +5,7 @@ import {
   ColorScheme,
   ColorSchemeProvider,
   MantineProvider,
+  useMantineTheme,
 } from '@mantine/core';
 import { wrapper } from '../src/store/store';
 import { useState } from 'react';
@@ -17,11 +18,11 @@ function App({ Component, pageProps }: AppProps) {
       value || (colorScheme === 'dark' ? 'light' : 'dark');
     setColorScheme(nextColorScheme);
   };
-  // const theme = useMantineTheme();
-  // const ignoreColors: string[] = ['dark', 'gray', 'green', 'yellow'];
-  // const swatches: any = Object.keys(theme.colors).filter((color) => {
-  //   return !ignoreColors.includes(color) && theme.colors[color][5];
-  // });
+  const theme = useMantineTheme();
+  const ignoreColors: string[] = ['dark', 'gray', 'green', 'yellow'];
+  const swatches: any = Object.keys(theme.colors).filter((color) => {
+    return !ignoreColors.includes(color) && theme.colors[color][5];
+  });
   return (
     <>
       <Head>
@@ -39,8 +40,8 @@ function App({ Component, pageProps }: AppProps) {
           withGlobalStyles
           withNormalizeCSS
           theme={{
-            // primaryColor: swatches[Math.floor(Math.random() * swatches.length)],
-            primaryColor: 'teal',
+            primaryColor: swatches[Math.floor(Math.random() * swatches.length)],
+            // primaryColor: 'teal',
             /** Put your mantine theme override here */
             colorScheme,
           }}
