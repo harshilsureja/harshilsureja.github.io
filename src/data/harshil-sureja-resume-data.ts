@@ -1,4 +1,6 @@
-const data: any = {
+import { IData } from '../types';
+
+const data: IData = {
   data: {
     personalDetails: {
       name: 'Harshil Sureja',

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Blockquote, Box, Flex } from '@mantine/core';
+import { THEME_NAME } from '../enum';
 
 export const Quote = () => {
+  const themeName: THEME_NAME = THEME_NAME.rainbow;
   return (
     <Flex
       style={{ position: 'relative' }}
@@ -49,7 +51,7 @@ export const Quote = () => {
           }}
         ></Box>
       </Box> */}
-      <Blockquote color={''} cite='— Harshil Sureja'>
+      <Blockquote color={themeName ? '' : 'lime'} cite='— Harshil Sureja'>
         {"Problem doesn't exist without solution."}
       </Blockquote>
     </Flex>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex, Text, Title } from '@mantine/core';
 
-export const About = ({ about }: any) => {
+export const About = ({ about }: { about: string }) => {
   return (
     <Flex gap={16} direction='column' align={'center'}>
       <Title order={3} weight={100}>

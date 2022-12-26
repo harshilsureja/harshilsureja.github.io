@@ -13,11 +13,19 @@ import {
   Menu,
 } from '@mantine/core';
 import { IconMoonStars, IconPalette, IconSun } from '@tabler/icons';
+import { IPersonalDetails } from '../types';
+import { STAIN_VARIANT, THEME_NAME } from '../enum';
+import { Stain } from './Stain';
 // import { Stain } from './stain';
 
-export const Hero = ({ personalDetails }: any) => {
+export const Hero = ({
+  personalDetails,
+}: {
+  personalDetails: IPersonalDetails;
+}) => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const theme = useMantineTheme();
+  const themeName: THEME_NAME = THEME_NAME.rainbow;
   // const swatches = (() => {
   //   const ignoreColors: string[] = ['dark', 'gray'];
   //   const colors: any = Object.keys(theme.colors).filter((color) => {
@@ -28,15 +36,24 @@ export const Hero = ({ personalDetails }: any) => {
 
   return (
     <Flex gap={16} direction='column' align={'center'} m={16 * 10}>
-      {/* <Title order={3} weight={100}>
-        Home
-      </Title> */}
       <Flex
         gap={16 * 16}
         direction={'row'}
         align={'center'}
         // style={{ position: 'relative' }}
       >
+        <Stain
+          w={250}
+          h={250}
+          ml={96}
+          mt={96}
+          opacity={0.2}
+          blur={16}
+          radius={'50%'}
+          transform={['0%', '0%']}
+          color={themeName ? '' : 'yellow'}
+          variant={STAIN_VARIANT.header}
+        />
         <Box>
           <Text color='dimmed' size={'md'}>
             Namaskaram 🙏🏻
@@ -46,8 +63,10 @@ export const Hero = ({ personalDetails }: any) => {
             <Text
               variant='gradient'
               gradient={{
-                from: theme.colors[theme.primaryColor][6],
-                to: theme.colors[theme.primaryColor][4],
+                from: themeName
+                  ? theme.colors[theme.primaryColor][6]
+                  : 'orange',
+                to: themeName ? theme.colors[theme.primaryColor][4] : 'yellow',
                 deg: 45,
               }}
               span
@@ -55,7 +74,12 @@ export const Hero = ({ personalDetails }: any) => {
               {personalDetails.name}
             </Text>
           </Title>
-          <Badge size='xl' my={8}>
+          <Badge
+            size='xl'
+            my={8}
+            color={themeName ? '' : 'red'}
+            variant='outline'
+          >
             {personalDetails.profile}
           </Badge>
           <Flex
@@ -78,18 +102,12 @@ export const Hero = ({ personalDetails }: any) => {
 
               <Menu.Dropdown>
                 <Menu.Label>Select theme</Menu.Label>
-                {swatches.map((colorName: any) => {
-                  console.log(colorName);
-                  return (
-                    <Menu.Item
-                      key={colorName}
-                      tt='capitalize'
-                      icon={<IconPalette size={14} />}
-                    >
-                      {colorName}
-                    </Menu.Item>
-                  );
-                })}
+                <Menu.Item tt='capitalize' icon={<IconPalette size={14} />}>
+                  Rainbow
+                </Menu.Item>
+                <Menu.Item tt='capitalize' icon={<IconPalette size={14} />}>
+                  Steely
+                </Menu.Item>
               </Menu.Dropdown>
             </Menu> */}
 
@@ -113,7 +131,7 @@ export const Hero = ({ personalDetails }: any) => {
         <Box>
           <Image
             src={personalDetails.profileImage}
-            // opacity={0.1}
+            opacity={0}
             alt='profile image'
             width={250}
             height={250}

@@ -1,6 +1,7 @@
 import request from '../../utils/request';
 import { RESUME } from '../constants/resume.constant';
 import resumeData from '../../data/harshil-sureja-resume-data';
+import { IData } from '../../types';
 
 export const fetchResume =
   () =>
@@ -17,24 +18,24 @@ export const fetchResume =
       url: `/api/getResume/`,
     };
     // const res = await request(apiRequest);
-    const res = resumeData.data;
+    const { data }: IData = resumeData;
 
-    if (res.error) {
-      dispatch({
-        type: RESUME.FAIL,
-        payload: {
-          loading: false,
-          error: res.error,
-        },
-      });
-    } else {
-      dispatch({
-        type: RESUME.SUCCESS,
-        payload: {
-          loading: false,
-          error: null,
-          data: res,
-        },
-      });
-    }
+    // if (res.error) {
+    //   dispatch({
+    //     type: RESUME.FAIL,
+    //     payload: {
+    //       loading: false,
+    //       error: res.error,
+    //     },
+    //   });
+    // } else {
+    dispatch({
+      type: RESUME.SUCCESS,
+      payload: {
+        loading: false,
+        error: null,
+        data,
+      },
+    });
+    // }
   };

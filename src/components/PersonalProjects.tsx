@@ -8,39 +8,74 @@ import {
   Timeline,
   Title,
 } from '@mantine/core';
+import { IPersonalProjects, IProject } from '../types';
+import {
+  PROJECT_STATUS,
+  PROJECT_STATUS_BADGE_COLOR,
+  STAIN_VARIANT,
+  THEME_NAME,
+} from '../enum';
+import { Stain } from './Stain';
 
-export const PersonalProjects = ({ personalProjects }: any) => {
+export const PersonalProjects = ({
+  personalProjects,
+}: {
+  personalProjects: IPersonalProjects;
+}) => {
+  const themeName: THEME_NAME = THEME_NAME.rainbow;
   return (
     <Flex gap={16} direction='column' align={'center'} maw={500} m={'auto'}>
       <Title order={3} weight={100}>
         Personal projects
       </Title>
+      <Stain
+        w={150}
+        h={150}
+        opacity={0.2}
+        blur={16}
+        radius={'50%'}
+        transform={['50%', '-20%']}
+        color={themeName ? '' : 'grape'}
+        variant={STAIN_VARIANT.projects}
+      />
       <Title order={6} c='dimmed'>
         <Code>{personalProjects.tagLine}</Code>
       </Title>
-      <Timeline active={4} bulletSize={16} lineWidth={4}>
-        {personalProjects.projects.map((ele: any, i: number) => (
+      <Timeline
+        active={4}
+        bulletSize={16}
+        lineWidth={4}
+        color={themeName ? '' : 'grape'}
+      >
+        {personalProjects.projects.map((ele: IProject, i: number) => (
           <Timeline.Item
             title={
               <Flex align={'center'}>
-                <Badge>{ele.stack}</Badge>
+                <Badge color={themeName ? '' : 'grape'}>{ele.stack}</Badge>
                 <Text mx={8} fz='sm' c='dimmed'>
                   {ele.name}
                 </Text>
               </Flex>
             }
             key={i}
-            lineVariant={ele.position == 'Intern' ? 'dashed' : 'solid'}
           >
             <Text>{ele.description}</Text>
-            <Anchor href={ele?.link} target='_blank'>
+            <Anchor
+              href={ele?.link}
+              target='_blank'
+              color={themeName ? '' : 'grape'}
+            >
               {ele?.link}
             </Anchor>
             <Flex align={'center'} mt={4} gap={8}>
               <Text size='xs' italic c='dimmed'>
                 {ele.year}
               </Text>
-              <Badge color={PROJECT_STATUS_BADGE_COLOR[ele.status]} size='xs'>
+              <Badge
+                color={PROJECT_STATUS_BADGE_COLOR[ele.status]}
+                size='sm'
+                variant='dot'
+              >
                 {PROJECT_STATUS[ele.status]}
               </Badge>
             </Flex>
@@ -52,15 +87,3 @@ export const PersonalProjects = ({ personalProjects }: any) => {
 };
 
 export default PersonalProjects;
-
-enum PROJECT_STATUS {
-  INACTIVE,
-  LIVE,
-  DISCONTINUED,
-}
-
-enum PROJECT_STATUS_BADGE_COLOR {
-  yellow,
-  green,
-  gray,
-}

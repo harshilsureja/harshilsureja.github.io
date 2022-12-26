@@ -1,18 +1,30 @@
 import React from 'react';
 import { Badge, Flex, Text, Timeline, Title } from '@mantine/core';
+import { IJob, IWorkExperience } from '../types';
+import { THEME_NAME } from '../enum';
 
-export const WorkExperience = ({ workExperience }: any) => {
+export const WorkExperience = ({
+  workExperience,
+}: {
+  workExperience: IWorkExperience;
+}) => {
+  const themeName: THEME_NAME = THEME_NAME.rainbow;
   return (
     <Flex gap={16} direction='column' align={'center'} maw={500} m={'auto'}>
       <Title order={3} weight={100}>
         Work experience
       </Title>
-      <Timeline active={0} bulletSize={16} lineWidth={4}>
-        {workExperience.jobs.map((ele: any, i: number) => (
+      <Timeline
+        active={0}
+        bulletSize={16}
+        lineWidth={4}
+        color={themeName ? '' : 'pink'}
+      >
+        {workExperience.jobs.map((ele: IJob, i: number) => (
           <Timeline.Item
             title={
               <Flex align={'center'}>
-                <Badge>{ele.position}</Badge>
+                <Badge color={themeName ? '' : 'pink'}>{ele.position}</Badge>
                 <Text mx={8} fz='sm' c='dimmed'>
                   {ele.name}
                 </Text>
