@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Anchor,
   Badge,
@@ -16,13 +16,15 @@ import {
   THEME_NAME,
 } from '../enum';
 import { Stain } from './Stain';
+import { useSelector } from 'react-redux';
 
 export const PersonalProjects = ({
   personalProjects,
 }: {
   personalProjects: IPersonalProjects;
 }) => {
-  const themeName: THEME_NAME = THEME_NAME.rainbow;
+  const { theme_name } = useSelector((state: any) => state.themeReducer);
+  useEffect(() => {}, [theme_name]);
   return (
     <Flex gap={16} direction='column' align={'center'} maw={500} m={'auto'}>
       <Title order={3} weight={100}>
@@ -35,7 +37,7 @@ export const PersonalProjects = ({
         blur={16}
         radius={'50%'}
         transform={['50%', '-20%']}
-        color={themeName ? '' : 'grape'}
+        color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
         variant={STAIN_VARIANT.projects}
       />
       <Title order={6} c='dimmed'>
@@ -45,13 +47,15 @@ export const PersonalProjects = ({
         active={4}
         bulletSize={16}
         lineWidth={4}
-        color={themeName ? '' : 'grape'}
+        color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
       >
         {personalProjects.projects.map((ele: IProject, i: number) => (
           <Timeline.Item
             title={
               <Flex align={'center'}>
-                <Badge color={themeName ? '' : 'grape'}>{ele.stack}</Badge>
+                <Badge color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}>
+                  {ele.stack}
+                </Badge>
                 <Text mx={8} fz='sm' c='dimmed'>
                   {ele.name}
                 </Text>
@@ -63,7 +67,7 @@ export const PersonalProjects = ({
             <Anchor
               href={ele?.link}
               target='_blank'
-              color={themeName ? '' : 'grape'}
+              color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
             >
               {ele?.link}
             </Anchor>

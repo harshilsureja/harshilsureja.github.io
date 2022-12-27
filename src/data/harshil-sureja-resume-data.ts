@@ -72,7 +72,7 @@ const data: IData = {
     },
 
     personalProjects: {
-      tagLine: '{{codding}} id belong from Array.hobbies',
+      tagLine: '{{codding}} is belong from Array.hobbies',
       projects: [
         {
           name: 'Tweet to image',

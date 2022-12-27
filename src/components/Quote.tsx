@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Blockquote, Box, Flex } from '@mantine/core';
 import { THEME_NAME } from '../enum';
+import { useSelector } from 'react-redux';
 
 export const Quote = () => {
-  const themeName: THEME_NAME = THEME_NAME.rainbow;
+  const { theme_name } = useSelector((state: any) => state.themeReducer);
+  useEffect(() => {}, [theme_name]);
   return (
     <Flex
       style={{ position: 'relative' }}
@@ -51,7 +53,10 @@ export const Quote = () => {
           }}
         ></Box>
       </Box> */}
-      <Blockquote color={themeName ? '' : 'lime'} cite='— Harshil Sureja'>
+      <Blockquote
+        color={theme_name != THEME_NAME.rainbow ? '' : 'lime'}
+        cite='— Harshil Sureja'
+      >
         {"Problem doesn't exist without solution."}
       </Blockquote>
     </Flex>

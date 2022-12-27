@@ -9,7 +9,6 @@ export const Stain = ({
   ...props
 }: any) => {
   const setVariant = (theme: any) => {
-    console.log(theme.colors[theme.primaryColor]);
     switch (variant) {
       case 1:
         return {

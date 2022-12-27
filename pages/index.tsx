@@ -13,7 +13,7 @@ import Languages from '../src/components/Languages';
 import Quote from '../src/components/Quote';
 import Contact from '../src/components/Contact';
 import { fetchResume } from '../src/store/actions/resume.action';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });

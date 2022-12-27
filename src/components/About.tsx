@@ -11,7 +11,7 @@ export const About = ({ about }: { about: string }) => {
         w={'50%'}
         miw={300}
         sx={(theme) => ({
-          backgroundColor:
+          background:
             theme.colorScheme === 'dark'
               ? theme.colors.dark[6]
               : theme.colors.gray[0],

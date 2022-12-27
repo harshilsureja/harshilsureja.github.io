@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Box,
   Flex,
@@ -16,32 +16,27 @@ import { IconMoonStars, IconPalette, IconSun } from '@tabler/icons';
 import { IPersonalDetails } from '../types';
 import { STAIN_VARIANT, THEME_NAME } from '../enum';
 import { Stain } from './Stain';
-// import { Stain } from './stain';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateTheme } from '../store/reducers/slice/theme';
 
 export const Hero = ({
   personalDetails,
 }: {
   personalDetails: IPersonalDetails;
 }) => {
+  const dispatch: any = useDispatch();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const theme = useMantineTheme();
-  const themeName: THEME_NAME = THEME_NAME.rainbow;
-  // const swatches = (() => {
-  //   const ignoreColors: string[] = ['dark', 'gray'];
-  //   const colors: any = Object.keys(theme.colors).filter((color) => {
-  //     return !ignoreColors.includes(color) && theme.colors[color][5];
-  //   });
-  //   return colors;
-  // })();
+  const { theme_name } = useSelector((state: any) => state.themeReducer);
+  useEffect(() => {}, [theme_name]);
+
+  const onThemeHandle = (themeNo: THEME_NAME) => {
+    dispatch(updateTheme(themeNo));
+  };
 
   return (
     <Flex gap={16} direction='column' align={'center'} m={16 * 10}>
-      <Flex
-        gap={16 * 16}
-        direction={'row'}
-        align={'center'}
-        // style={{ position: 'relative' }}
-      >
+      <Flex gap={16 * 16} direction={'row'} align={'center'} wrap={'wrap'}>
         <Stain
           w={250}
           h={250}
@@ -51,7 +46,7 @@ export const Hero = ({
           blur={16}
           radius={'50%'}
           transform={['0%', '0%']}
-          color={themeName ? '' : 'yellow'}
+          color={theme_name != THEME_NAME.rainbow ? '' : 'yellow'}
           variant={STAIN_VARIANT.header}
         />
         <Box>
@@ -63,10 +58,14 @@ export const Hero = ({
             <Text
               variant='gradient'
               gradient={{
-                from: themeName
-                  ? theme.colors[theme.primaryColor][6]
-                  : 'orange',
-                to: themeName ? theme.colors[theme.primaryColor][4] : 'yellow',
+                from:
+                  theme_name != THEME_NAME.rainbow
+                    ? theme.colors[theme.primaryColor][6]
+                    : 'orange',
+                to:
+                  theme_name != THEME_NAME.rainbow
+                    ? theme.colors[theme.primaryColor][4]
+                    : 'yellow',
                 deg: 45,
               }}
               span
@@ -77,7 +76,7 @@ export const Hero = ({
           <Badge
             size='xl'
             my={8}
-            color={themeName ? '' : 'red'}
+            color={theme_name != THEME_NAME.rainbow ? '' : 'red'}
             variant='outline'
           >
             {personalDetails.profile}
@@ -93,7 +92,7 @@ export const Hero = ({
             align={'center'}
             justify={'center'}
           >
-            {/* <Menu shadow='md' width={200}>
+            <Menu shadow='md' width={200}>
               <Menu.Target>
                 <ActionIcon variant='transparent'>
                   <IconPalette />
@@ -102,26 +101,35 @@ export const Hero = ({
 
               <Menu.Dropdown>
                 <Menu.Label>Select theme</Menu.Label>
-                <Menu.Item tt='capitalize' icon={<IconPalette size={14} />}>
+                <Menu.Item
+                  tt='capitalize'
+                  icon={<IconPalette size={14} />}
+                  onClick={() => onThemeHandle(1)}
+                >
                   Rainbow
                 </Menu.Item>
-                <Menu.Item tt='capitalize' icon={<IconPalette size={14} />}>
+                <Menu.Item
+                  tt='capitalize'
+                  icon={<IconPalette size={14} />}
+                  onClick={() => onThemeHandle(2)}
+                >
                   Steely
                 </Menu.Item>
               </Menu.Dropdown>
-            </Menu> */}
+            </Menu>
 
             <Switch
               checked={colorScheme === 'dark'}
               onChange={() => toggleColorScheme()}
-              size='md'
+              color={theme_name != THEME_NAME.rainbow ? '' : 'gray'}
+              size='lg'
               onLabel={
-                <IconSun color={theme.colors.yellow[5]} size={16} stroke={2} />
+                <IconSun color={theme.colors.yellow[5]} size={20} stroke={2} />
               }
               offLabel={
                 <IconMoonStars
                   color={theme.colors.blue[5]}
-                  size={16}
+                  size={20}
                   stroke={2}
                 />
               }
