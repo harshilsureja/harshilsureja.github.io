@@ -30,11 +30,11 @@ export const Contact = ({ contactDetails }: { contactDetails: IContact[] }) => {
       <Stain
         w={250}
         h={150}
-        ml={32}
         opacity={0.5}
         blur={16}
+        ml={{ base: '0', sm: '16%' }}
+        mt={{ base: '16%', sm: '6%' }}
         radius={'50%'}
-        transform={['30%', '50%']}
         color={theme_name != THEME_NAME.rainbow ? '' : 'green'}
         variant={STAIN_VARIANT.contact}
       />

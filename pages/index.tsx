@@ -1,8 +1,7 @@
 import Head from 'next/head';
-import { Inter } from '@next/font/google';
 import styles from '../styles/Home.module.css';
 import About from '../src/components/About';
-import { Box, Flex, Loader, LoadingOverlay, Image } from '@mantine/core';
+import { Flex, LoadingOverlay } from '@mantine/core';
 import Hero from '../src/components/Hero';
 import Education from '../src/components/Education';
 import WorkExperience from '../src/components/WorkExperience';
@@ -15,8 +14,6 @@ import Contact from '../src/components/Contact';
 import { fetchResume } from '../src/store/actions/resume.action';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-
-const inter = Inter({ subsets: ['latin'] });
 
 function Home() {
   const dispatch: any = useDispatch();

@@ -2,6 +2,13 @@ import React, { useEffect } from 'react';
 import { Blockquote, Box, Flex } from '@mantine/core';
 import { THEME_NAME } from '../enum';
 import { useSelector } from 'react-redux';
+import { Source_Serif_Pro } from '@next/font/google';
+
+const SourceSerifPro = Source_Serif_Pro({
+  weight: ['400'],
+  style: ['italic'],
+  subsets: ['latin'],
+});
 
 export const Quote = () => {
   const { theme_name } = useSelector((state: any) => state.themeReducer);
@@ -56,6 +63,7 @@ export const Quote = () => {
       <Blockquote
         color={theme_name != THEME_NAME.rainbow ? '' : 'lime'}
         cite='— Harshil Sureja'
+        className={SourceSerifPro.className}
       >
         {"Problem doesn't exist without solution."}
       </Blockquote>

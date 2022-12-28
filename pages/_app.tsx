@@ -24,7 +24,7 @@ function App({ Component, pageProps }: AppProps) {
   };
   const theme = useMantineTheme();
   const ignoreColors: string[] = ['dark', 'gray', 'green', 'yellow'];
-  const swatches: any = Object.keys(theme.colors).filter((color) => {
+  const swatches: string[] = Object.keys(theme.colors).filter((color) => {
     return !ignoreColors.includes(color) && theme.colors[color][5];
   });
   return (

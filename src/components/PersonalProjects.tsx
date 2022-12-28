@@ -17,6 +17,13 @@ import {
 } from '../enum';
 import { Stain } from './Stain';
 import { useSelector } from 'react-redux';
+import { Fira_Code } from '@next/font/google';
+
+const FiraCode = Fira_Code({
+  weight: ['500'],
+  style: ['normal'],
+  subsets: ['latin'],
+});
 
 export const PersonalProjects = ({
   personalProjects,
@@ -36,12 +43,12 @@ export const PersonalProjects = ({
         opacity={0.2}
         blur={16}
         radius={'50%'}
-        transform={['50%', '-20%']}
+        ml={{ base: '0', sm: '16%' }}
         color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
         variant={STAIN_VARIANT.projects}
       />
       <Title order={6} c='dimmed'>
-        <Code>{personalProjects.tagLine}</Code>
+        <Code className={FiraCode.className}>{personalProjects.tagLine}</Code>
       </Title>
       <Timeline
         active={4}
