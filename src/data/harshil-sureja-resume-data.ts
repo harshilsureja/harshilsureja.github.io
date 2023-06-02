@@ -75,6 +75,15 @@ const data: IData = {
       tagLine: '{{codding}} is belong from Array.hobbies',
       projects: [
         {
+          name: 'Mock Studio',
+          stack: 'React Js',
+          description:
+            'The web app can generate Safari-style mock screenshots from uploaded image.',
+          link: 'https://mockstudio.vercel.app',
+          year: 2023,
+          status: 1,
+        },
+        {
           name: 'Tweet to image',
           stack: 'MERN Stack',
           description:
