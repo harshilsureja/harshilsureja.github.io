@@ -6,7 +6,7 @@ const data: IData = {
       name: 'Harshil Sureja',
       profile: 'Full-Stack Developer',
       about:
-        'I am a full-stack web developer. But I am more interested in backend. The technologies I have mainly used are ReactJS & NodeJS and ready to learn new technology as well. I wish to get a position where my skill is utilized as much as possible.',
+        'I am a full-stack web developer, with a primary interest in backend development. I have extensive experience working with ReactJS and NodeJS and am enthusiastic about embracing new technologies. I am eager to secure a position where I can fully leverage and expand upon my skill set.',
       profileImage: 'harshilsureja.jpg',
     },
 
@@ -39,7 +39,7 @@ const data: IData = {
           name: 'AllianceTek',
           position: 'Full-Stack developer',
           description:
-            'I built the backend with Node js and Postgres of one tracking project.',
+            'I specialized in backend development using Node.js, while handling frontend tasks with React, AngularJS, and Next.js.',
           duration: 'Running',
           year: {
             start: 2022,
@@ -50,7 +50,7 @@ const data: IData = {
           name: 'AllianceTek',
           position: 'Intern',
           description:
-            'I built material tracking tool project with React, Node js and MySQL.',
+            'I successfully developed a material tracking tool project using React, Node.js, and MySQL.',
           duration: '6 Months',
           year: {
             start: 2022,
@@ -61,7 +61,7 @@ const data: IData = {
           name: 'NG Forest',
           position: 'Freelancer',
           description:
-            "Working on client's projects. I am just exploring and learning new technologies in this years.",
+            "I'm currently engaged in client projects while actively exploring and learning new technologies this year.",
           duration: 'Just learning',
           year: {
             start: 2020,
@@ -75,10 +75,19 @@ const data: IData = {
       tagLine: '{{codding}} is belong from Array.hobbies',
       projects: [
         {
+          name: 'EnlightUp',
+          stack: 'PERN Stack',
+          description:
+            'Our web app centralizes customer feedback, empowering businesses to gather valuable insights in one location, aiding in informed product decisions.',
+          link: 'https://enlightup.io',
+          year: 2024,
+          status: 1,
+        },
+        {
           name: 'Mock Studio',
           stack: 'React Js',
           description:
-            'The web app can generate Safari-style mock screenshots from uploaded image.',
+            'Our web app has the capability to generate Safari-style mock screenshots using uploaded images.',
           link: 'https://mockstudio.vercel.app',
           year: 2023,
           status: 1,
@@ -87,7 +96,7 @@ const data: IData = {
           name: 'Tweet to image',
           stack: 'MERN Stack',
           description:
-            'Web app can create beautiful tweet image and you can share it on any other social media.',
+            'Our web app enables users to effortlessly create visually appealing tweet images, which can be easily shared across various social media platforms.',
           link: 'https://tweet-to-img.vercel.app',
           year: 2022,
           status: 1,
@@ -96,7 +105,7 @@ const data: IData = {
           name: 'Digital Store Web App',
           stack: 'MERN Stack',
           description:
-            'Similar to digital catalog concept. Retails can create own website and display categories wise products.',
+            'This platform operates on a digital catalog model, empowering retailers to create personalized websites showcasing products categorized for easy navigation and display.',
           year: 2021,
           status: 0,
         },
@@ -104,7 +113,7 @@ const data: IData = {
           name: 'Community Web App',
           stack: 'MEAN Stack',
           description:
-            'Private community app. Just like slack messages with channel functionality, members & family members management and journal, directory and loaded with many other features.',
+            'This app functions as a private community platform, offering features akin to Slack, including channel-based messaging, member and family management capabilities, as well as journaling, a directory, and an array of additional features.',
           year: 2020,
           status: 1,
         },
@@ -112,7 +121,7 @@ const data: IData = {
           name: 'Online Coaching Institute Management Web App',
           stack: 'MEAN Stack',
           description:
-            'This app is all about managing attendance, result, timetable, fees management and many more features of online classes.',
+            'This app encompasses various functionalities, including attendance tracking, result management, timetable organization, fee administration, and numerous other features tailored for online classes.',
           year: 2019,
           status: 2,
         },

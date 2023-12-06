@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 import {
   Anchor,
   Badge,
+  Center,
   Code,
-  Flex,
+  Container,
+  Group,
   Text,
   Timeline,
   Title,
+  em,
 } from '@mantine/core';
 import { IPersonalProjects, IProject } from '../types';
 import {
@@ -18,6 +21,7 @@ import {
 import { Stain } from './Stain';
 import { useSelector } from 'react-redux';
 import { Fira_Code } from '@next/font/google';
+import { useMediaQuery } from '@mantine/hooks';
 
 const FiraCode = Fira_Code({
   weight: ['500'],
@@ -32,41 +36,48 @@ export const PersonalProjects = ({
 }) => {
   const { theme_name } = useSelector((state: any) => state.themeReducer);
   useEffect(() => {}, [theme_name]);
+  const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
+
   return (
-    <Flex gap={16} direction='column' align={'center'} maw={500} m={'auto'}>
-      <Title order={3} weight={100}>
+    <Container>
+      <Center >
+      <Title order={3} mb={'sm'}>
         Personal projects
-      </Title>
+      </Title></Center>
       <Stain
         w={150}
         h={150}
         opacity={0.2}
         blur={16}
         radius={'50%'}
-        ml={{ base: '0', sm: '16%' }}
+        ml={{ base: '0', sm: '512px' }}
+        mt={{ base: '0', sm: '-48px' }}
         color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
         variant={STAIN_VARIANT.projects}
       />
-      <Title order={6} c='dimmed'>
-        <Code className={FiraCode.className}>{personalProjects.tagLine}</Code>
-      </Title>
+      <Center >
+      <Title order={6} c='dimmed' mb={'sm'}>
+        <Code m={'auto'} className={FiraCode.className}>{personalProjects.tagLine}</Code>
+      </Title></Center>
+      <Group justify='center'>
       <Timeline
         active={4}
         bulletSize={16}
         lineWidth={4}
+        maw={isMobile?'90%':'70%'}
         color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
       >
         {personalProjects.projects.map((ele: IProject, i: number) => (
           <Timeline.Item
             title={
-              <Flex align={'center'}>
-                <Badge color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}>
+              <Group align={'center'} gap={'sm'}>
+                <Badge color={theme_name != THEME_NAME.rainbow ? '' : 'grape'} variant='light'>
                   {ele.stack}
                 </Badge>
-                <Text mx={8} fz='sm' c='dimmed'>
+                <Text fz='sm' c='dimmed'>
                   {ele.name}
                 </Text>
-              </Flex>
+              </Group>
             }
             key={i}
           >
@@ -74,12 +85,12 @@ export const PersonalProjects = ({
             <Anchor
               href={ele?.link}
               target='_blank'
-              color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
+              c={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
             >
               {ele?.link}
             </Anchor>
-            <Flex align={'center'} mt={4} gap={8}>
-              <Text size='xs' italic c='dimmed'>
+            <Group align={'center'} mt={'sm'} gap={'md'}>
+              <Text size='xs' fs={'italic'} c='dimmed'>
                 {ele.year}
               </Text>
               <Badge
@@ -89,11 +100,11 @@ export const PersonalProjects = ({
               >
                 {PROJECT_STATUS[ele.status]}
               </Badge>
-            </Flex>
+            </Group>
           </Timeline.Item>
         ))}
-      </Timeline>
-    </Flex>
+      </Timeline></Group>
+    </Container>
   );
 };
 

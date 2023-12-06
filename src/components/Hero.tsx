@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import {
   Box,
-  Flex,
   Text,
   Title,
   Image,
@@ -11,8 +10,9 @@ import {
   useMantineColorScheme,
   ActionIcon,
   Menu,
+  Group,
 } from '@mantine/core';
-import { IconMoonStars, IconPalette, IconSun } from '@tabler/icons';
+import { IconMoonStars, IconPalette, IconSun } from '@tabler/icons-react';
 import { IPersonalDetails } from '../types';
 import { STAIN_VARIANT, THEME_NAME } from '../enum';
 import { Stain } from './Stain';
@@ -35,32 +35,77 @@ export const Hero = ({
   };
 
   return (
-    <Flex
+    <> <Group justify='end' align='center'>
+      
+          <Menu shadow='md' width={200}>
+            <Menu.Target>
+              <ActionIcon variant='transparent'>
+                <IconPalette />
+              </ActionIcon>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              <Menu.Label>Select theme</Menu.Label>
+              <Menu.Item
+                tt='capitalize'
+                leftSection={<IconPalette color='gray' />}
+                onClick={() => onThemeHandle(1)}
+              >
+                Rainbow
+              </Menu.Item>
+              <Menu.Item
+                tt='capitalize'
+                leftSection={<IconPalette  color='gray'/>}
+                onClick={() => onThemeHandle(2)}
+              >
+                Steely
+              </Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
+          <Switch
+            checked={colorScheme === 'dark'}
+            onChange={() => toggleColorScheme()}
+            color={theme_name != THEME_NAME.rainbow ? '' : 'gray'}
+            size='lg'
+            onLabel={
+              <IconSun 
+              color={theme.colors.yellow[5]} size={20} stroke={2} 
+              />
+            }
+            offLabel={
+              <IconMoonStars
+                color={theme.colors.blue[5]}
+                // size={20}
+                stroke={2}
+              />
+            }
+          />
+      </Group>
+    <Group
       align={'center'}
-      justify={'space-around'}
-      h={{ base: '70vh', sm: '60vh' }}
-      w={{ base: '100vw', sm: '50vw' }}
-      direction={{ base: 'column', sm: 'row' }}
+      justify={'center'}
       mt={{ base: 16 * 4, sm: 0 }}
-      gap={'lg'}
+      gap={'112px'}
     >
-      <Box>
+      <Group>
         <Stain
           w={250}
           h={250}
-          ml={{ base: '0', sm: '8%' }}
+          ml={{ base: '0', sm: '128px' }}
+          mt={{ base: '0', sm: '96px' }}
           opacity={0.2}
           blur={16}
           radius={'50%'}
           color={theme_name != THEME_NAME.rainbow ? '' : 'yellow'}
           variant={STAIN_VARIANT.header}
         />
-        <Text color='dimmed' size={'md'}>
+        <Box>
+        <Text c='dimmed' size={'md'}>
           Namaskaram 🙏🏻
         </Text>
         <Title order={1}>
           {`I'm `}
-          <Text
+          <Text inherit
             variant='gradient'
             gradient={{
               from:
@@ -85,73 +130,20 @@ export const Hero = ({
           variant='outline'
         >
           {personalDetails.profile}
-        </Badge>
-        <Flex
-          style={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-          }}
-          m={16}
-          gap={16}
-          align={'center'}
-          justify={'center'}
-        >
-          <Menu shadow='md' width={200}>
-            <Menu.Target>
-              <ActionIcon variant='transparent'>
-                <IconPalette />
-              </ActionIcon>
-            </Menu.Target>
-
-            <Menu.Dropdown>
-              <Menu.Label>Select theme</Menu.Label>
-              <Menu.Item
-                tt='capitalize'
-                icon={<IconPalette size={14} />}
-                onClick={() => onThemeHandle(1)}
-              >
-                Rainbow
-              </Menu.Item>
-              <Menu.Item
-                tt='capitalize'
-                icon={<IconPalette size={14} />}
-                onClick={() => onThemeHandle(2)}
-              >
-                Steely
-              </Menu.Item>
-            </Menu.Dropdown>
-          </Menu>
-
-          <Switch
-            checked={colorScheme === 'dark'}
-            onChange={() => toggleColorScheme()}
-            color={theme_name != THEME_NAME.rainbow ? '' : 'gray'}
-            size='lg'
-            onLabel={
-              <IconSun color={theme.colors.yellow[5]} size={20} stroke={2} />
-            }
-            offLabel={
-              <IconMoonStars
-                color={theme.colors.blue[5]}
-                size={20}
-                stroke={2}
-              />
-            }
-          />
-        </Flex>
-      </Box>
+        </Badge></Box>
+        
+      </Group>
       <Box>
         <Image
           src={personalDetails.profileImage}
           opacity={1}
           alt='profile image'
-          width={250}
-          height={250}
+          width={200}
+          height={200}
           radius='lg'
         />
       </Box>
-    </Flex>
+    </Group></>
   );
 };
 

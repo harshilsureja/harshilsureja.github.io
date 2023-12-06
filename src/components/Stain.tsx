@@ -1,4 +1,4 @@
-import { Box } from '@mantine/core';
+import { Box, useMantineTheme } from '@mantine/core';
 
 export const Stain = ({
   blur,
@@ -8,7 +8,8 @@ export const Stain = ({
   variant,
   ...props
 }: any) => {
-  const setVariant = (theme: any) => {
+  const theme = useMantineTheme()
+  const setVariant = () => {
     switch (variant) {
       case 1:
         return {
@@ -153,11 +154,9 @@ export const Stain = ({
         transform: `translate(${transform})`,
         position: 'absolute',
         zIndex: -1,
+        ...setVariant()
       }}
       {...props}
-      sx={(theme: any) => {
-        return setVariant(theme);
-      }}
     ></Box>
   );
 };

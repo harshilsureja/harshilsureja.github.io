@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+// import styles from '../styles/Home.module.css';
 import About from '../src/components/About';
 import { Flex, LoadingOverlay } from '@mantine/core';
 import Hero from '../src/components/Hero';
@@ -29,19 +29,17 @@ function Home() {
       <Head>
         <title>Harshil Sureja - Resume </title>
         <meta name='description' content='Harshil Sureja - Resume' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      {/* className={inter.className} */}
       <Flex
-        justify={'center'}
-        align={'center'}
+        // justify={'center'}
+        // align={'center'}
         direction={'column'}
         gap={64}
         p={16}
       >
         {/* {loading && <Loader />} */}
-        <LoadingOverlay visible={loading} overlayBlur={4} />
+        <LoadingOverlay visible={loading} overlayProps={{blur:4}} />
         {data && (
           <>
             <Hero personalDetails={data.personalDetails} />

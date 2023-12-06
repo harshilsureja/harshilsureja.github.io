@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Badge, Flex, Title } from '@mantine/core';
+import { Badge, Center, Container, Flex, Group, Title } from '@mantine/core';
 import { ITechSkill } from '../types';
 import { THEME_NAME } from '../enum';
 import { useSelector } from 'react-redux';
@@ -8,53 +8,56 @@ export const TechSkills = ({ techSkills }: { techSkills: ITechSkill }) => {
   const { theme_name } = useSelector((state: any) => state.themeReducer);
   useEffect(() => {}, [theme_name]);
   return (
-    <Flex gap={16} direction='column' align={'center'}>
-      <Title order={3} weight={100} m={16}>
+    <Container>
+      <Center mb={'sm'}>
+      <Title order={3}>
         Tech skills
-      </Title>
-      <Title order={6} c='dimmed'>
+      </Title></Center>
+      <Center>
+      <Title order={6} c='dimmed' mb={'md'}>
         Frontend
       </Title>
-      <Flex gap={16} mb={8} justify={'center'} wrap={'wrap'}>
+      </Center>
+      <Group justify='center' mb={'md'}>
         {techSkills.frontEnd.map((ele: string) => (
           <Badge
             color={theme_name != THEME_NAME.rainbow ? '' : 'violet'}
-            size='lg'
+            size='lg' variant='light'
             key={ele}
           >
             {ele}
           </Badge>
         ))}
-      </Flex>
-      <Title order={6} c='dimmed'>
+      </Group><Center>
+      <Title order={6} c='dimmed' mb={'md'}>
         Backend
-      </Title>
-      <Flex gap={16} mb={8} justify={'center'} wrap={'wrap'}>
+      </Title></Center>
+      <Group justify='center' mb={'md'}>
         {techSkills.backEnd.map((ele: string) => (
           <Badge
             color={theme_name != THEME_NAME.rainbow ? '' : 'indigo'}
-            size='lg'
+            size='lg' variant='light'
             key={ele}
           >
             {ele}
           </Badge>
         ))}
-      </Flex>
-      <Title order={6} c='dimmed'>
+      </Group><Center>
+      <Title order={6} c='dimmed' mb={'md'}>
         Database
-      </Title>
-      <Flex gap={16} mb={8} justify={'center'} wrap={'wrap'}>
+      </Title></Center>
+      <Group justify='center' mb={'md'}>
         {techSkills.database.map((ele: string) => (
           <Badge
             color={theme_name != THEME_NAME.rainbow ? '' : 'blue'}
-            size='lg'
+            size='lg' variant='light'
             key={ele}
           >
             {ele}
           </Badge>
         ))}
-      </Flex>
-    </Flex>
+      </Group>
+    </Container>
   );
 };
 

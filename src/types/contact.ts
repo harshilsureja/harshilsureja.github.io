@@ -4,7 +4,7 @@ import {
   IconBrandWhatsapp,
   IconMail,
   IconPhone,
-} from '@tabler/icons';
+} from '@tabler/icons-react';
 
 export const contactList = {
   Phone: IconPhone,
