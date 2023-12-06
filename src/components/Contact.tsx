@@ -33,12 +33,11 @@ export const Contact = ({ contactDetails }: { contactDetails: IContact[] }) => {
         variant={STAIN_VARIANT.contact}
       />
       <Center>
-      <Title order={3} mb={'md'}>
-        Contact
-      </Title></Center>
-      <Group
-        justify={'center'}
-      >
+        <Title order={3} mb={'md'}>
+          Contact
+        </Title>
+      </Center>
+      <Group justify={'center'}>
         {contactDetails.map((ele: IContact, i: number) => {
           const Icon = contactList[ele.platform];
           return (
@@ -46,7 +45,7 @@ export const Contact = ({ contactDetails }: { contactDetails: IContact[] }) => {
               <Card
                 radius={'md'}
                 style={{
-                  backgroundColor:`light-dark(
+                  backgroundColor: `light-dark(
                     rgba(var(--mantine-color-gray-0),0.2),
                     rgba(var(--mantine-color-dark-6),0.2)
                   )`,

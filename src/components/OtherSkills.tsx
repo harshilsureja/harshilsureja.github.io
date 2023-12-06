@@ -1,5 +1,13 @@
 import React, { useEffect } from 'react';
-import { Badge, Box, Center, Container,  Group, Space, Title } from '@mantine/core';
+import {
+  Badge,
+  Box,
+  Center,
+  Container,
+  Group,
+  Space,
+  Title,
+} from '@mantine/core';
 import { IOtherSkill } from '../types';
 import { THEME_NAME } from '../enum';
 import { useSelector } from 'react-redux';
@@ -9,14 +17,15 @@ export const OtherSkills = ({ otherSkills }: { otherSkills: IOtherSkill }) => {
   useEffect(() => {}, [theme_name]);
   return (
     <Container>
-      <Center >
-      <Title order={3} mb={'sm'}>
-        Other skills
-      </Title></Center>
       <Center>
-      <Title order={6} c='dimmed' mb={'md'}>
-        Cloud
-      </Title>
+        <Title order={3} mb={'sm'}>
+          Other skills
+        </Title>
+      </Center>
+      <Center>
+        <Title order={6} c='dimmed' mb={'md'}>
+          Cloud
+        </Title>
       </Center>
       <Group justify='center'>
         {otherSkills.cloud.map((ele: string) => (
@@ -28,7 +37,8 @@ export const OtherSkills = ({ otherSkills }: { otherSkills: IOtherSkill }) => {
           >
             {ele}
           </Badge>
-        ))}</Group>
+        ))}
+      </Group>
     </Container>
   );
 };

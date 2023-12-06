@@ -27,6 +27,7 @@
     "@next/font": "14.0.3",
     "@reduxjs/toolkit": "^2.0.1",
     "@tabler/icons": "^2.42.0",
+    "@tabler/icons-react": "^2.42.0",
     "@tiptap/extension-link": "^2.1.13",
     "@tiptap/react": "^2.1.13",
     "@tiptap/starter-kit": "^2.1.13",

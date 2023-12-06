@@ -40,10 +40,11 @@ export const PersonalProjects = ({
 
   return (
     <Container>
-      <Center >
-      <Title order={3} mb={'sm'}>
-        Personal projects
-      </Title></Center>
+      <Center>
+        <Title order={3} mb={'sm'}>
+          Personal projects
+        </Title>
+      </Center>
       <Stain
         w={150}
         h={150}
@@ -55,55 +56,62 @@ export const PersonalProjects = ({
         color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
         variant={STAIN_VARIANT.projects}
       />
-      <Center >
-      <Title order={6} c='dimmed' mb={'sm'}>
-        <Code m={'auto'} className={FiraCode.className}>{personalProjects.tagLine}</Code>
-      </Title></Center>
+      <Center>
+        <Title order={6} c='dimmed' mb={'sm'}>
+          <Code m={'auto'} className={FiraCode.className}>
+            {personalProjects.tagLine}
+          </Code>
+        </Title>
+      </Center>
       <Group justify='center'>
-      <Timeline
-        active={4}
-        bulletSize={16}
-        lineWidth={4}
-        maw={isMobile?'90%':'70%'}
-        color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
-      >
-        {personalProjects.projects.map((ele: IProject, i: number) => (
-          <Timeline.Item
-            title={
-              <Group align={'center'} gap={'sm'}>
-                <Badge color={theme_name != THEME_NAME.rainbow ? '' : 'grape'} variant='light'>
-                  {ele.stack}
-                </Badge>
-                <Text fz='sm' c='dimmed'>
-                  {ele.name}
-                </Text>
-              </Group>
-            }
-            key={i}
-          >
-            <Text>{ele.description}</Text>
-            <Anchor
-              href={ele?.link}
-              target='_blank'
-              c={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
+        <Timeline
+          active={4}
+          bulletSize={16}
+          lineWidth={4}
+          maw={isMobile ? '90%' : '70%'}
+          color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
+        >
+          {personalProjects.projects.map((ele: IProject, i: number) => (
+            <Timeline.Item
+              title={
+                <Group align={'center'} gap={'sm'}>
+                  <Badge
+                    color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
+                    variant='light'
+                  >
+                    {ele.stack}
+                  </Badge>
+                  <Text fz='sm' c='dimmed'>
+                    {ele.name}
+                  </Text>
+                </Group>
+              }
+              key={i}
             >
-              {ele?.link}
-            </Anchor>
-            <Group align={'center'} mt={'sm'} gap={'md'}>
-              <Text size='xs' fs={'italic'} c='dimmed'>
-                {ele.year}
-              </Text>
-              <Badge
-                color={PROJECT_STATUS_BADGE_COLOR[ele.status]}
-                size='sm'
-                variant='dot'
+              <Text>{ele.description}</Text>
+              <Anchor
+                href={ele?.link}
+                target='_blank'
+                c={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
               >
-                {PROJECT_STATUS[ele.status]}
-              </Badge>
-            </Group>
-          </Timeline.Item>
-        ))}
-      </Timeline></Group>
+                {ele?.link}
+              </Anchor>
+              <Group align={'center'} mt={'sm'} gap={'md'}>
+                <Text size='xs' fs={'italic'} c='dimmed'>
+                  {ele.year}
+                </Text>
+                <Badge
+                  color={PROJECT_STATUS_BADGE_COLOR[ele.status]}
+                  size='sm'
+                  variant='dot'
+                >
+                  {PROJECT_STATUS[ele.status]}
+                </Badge>
+              </Group>
+            </Timeline.Item>
+          ))}
+        </Timeline>
+      </Group>
     </Container>
   );
 };

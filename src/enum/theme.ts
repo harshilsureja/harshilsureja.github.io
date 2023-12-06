@@ -11,5 +11,5 @@ export enum STAIN_VARIANT {
 
 export enum THEME_MODE {
   light = 'light',
-  dark = 'dark'
+  dark = 'dark',
 }

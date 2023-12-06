@@ -15,15 +15,12 @@ export const Quote = () => {
   const { theme_name } = useSelector((state: any) => state.themeReducer);
   useEffect(() => {}, [theme_name]);
   return (
-    <Group
-      justify={'center'}
-      mb={'md'}
-    >
+    <Group justify={'center'} mb={'md'}>
       <Blockquote
         color={theme_name != THEME_NAME.rainbow ? '' : 'lime'}
         cite='— Harshil Sureja'
         className={SourceSerifPro.className}
-        icon={<IconQuote/>}
+        icon={<IconQuote />}
       >
         {"Problem doesn't exist without solution."}
       </Blockquote>
