@@ -1,0 +1,12 @@
+export type { ICollege } from './college';
+export type { IContact } from './contact';
+export type { IEduction } from './eduction';
+export type { IJob } from './job';
+export type { IOtherSkill } from './otherSkill';
+export type { IPersonalDetails } from './personalDetails';
+export type { IPersonalProjects } from './personalProjects';
+export type { IProject } from './project';
+export type { IData } from './resumeData';
+export type { ITechSkill } from './techSkill';
+export type { IWorkExperience } from './workExperience';
+export type { IYear } from './year';
