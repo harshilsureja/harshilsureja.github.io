@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Box,
   Text,
@@ -8,37 +8,27 @@ import {
   Switch,
   useMantineTheme,
   useMantineColorScheme,
-  ActionIcon,
-  Menu,
   Group,
 } from '@mantine/core';
-import { IconMoonStars, IconPalette, IconSun } from '@tabler/icons-react';
+import { IconMoonStars, IconSun } from '@tabler/icons-react';
 import { IPersonalDetails } from '../types';
-import { STAIN_VARIANT, THEME_NAME } from '../enum';
+import { STAIN_VARIANT } from '../enum';
 import { Stain } from './Stain';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateTheme } from '../store/reducers/slice/theme';
 
 export const Hero = ({
   personalDetails,
 }: {
   personalDetails: IPersonalDetails;
 }) => {
-  const dispatch: any = useDispatch();
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme({
+    keepTransitions: true,
+  });
+
   const theme = useMantineTheme();
-  const { theme_name } = useSelector((state: any) => state.themeReducer);
-  useEffect(() => {}, [theme_name]);
-
-  const onThemeHandle = (themeNo: THEME_NAME) => {
-    dispatch(updateTheme(themeNo));
-  };
-
   return (
     <>
-      {' '}
       <Group justify='end' align='center'>
-        <Menu shadow='md' width={200}>
+        {/* <Menu shadow='md' width={200}>
           <Menu.Target>
             <ActionIcon variant='transparent'>
               <IconPalette />
@@ -50,33 +40,29 @@ export const Hero = ({
             <Menu.Item
               tt='capitalize'
               leftSection={<IconPalette color='gray' />}
-              onClick={() => onThemeHandle(1)}
+              // onClick={() => onThemeHandle(1)}
             >
               Rainbow
             </Menu.Item>
             <Menu.Item
               tt='capitalize'
               leftSection={<IconPalette color='gray' />}
-              onClick={() => onThemeHandle(2)}
+              // onClick={() => onThemeHandle(2)}
             >
               Steely
             </Menu.Item>
           </Menu.Dropdown>
-        </Menu>
+        </Menu> */}
         <Switch
           checked={colorScheme === 'dark'}
           onChange={() => toggleColorScheme()}
-          color={theme_name != THEME_NAME.rainbow ? '' : 'gray'}
+          color={'gray'}
           size='lg'
           onLabel={
             <IconSun color={theme.colors.yellow[5]} size={20} stroke={2} />
           }
           offLabel={
-            <IconMoonStars
-              color={theme.colors.blue[5]}
-              // size={20}
-              stroke={2}
-            />
+            <IconMoonStars color={theme.colors.blue[5]} size={20} stroke={2} />
           }
         />
       </Group>
@@ -95,7 +81,7 @@ export const Hero = ({
             opacity={0.2}
             blur={16}
             radius={'50%'}
-            color={theme_name != THEME_NAME.rainbow ? '' : 'yellow'}
+            color={'yellow'}
             variant={STAIN_VARIANT.header}
           />
           <Box>
@@ -109,13 +95,13 @@ export const Hero = ({
                 variant='gradient'
                 gradient={{
                   from:
-                    theme_name != THEME_NAME.rainbow
-                      ? theme.colors[theme.primaryColor][6]
-                      : 'orange',
+                    // theme_name != THEME_NAME.rainbow
+                    // ? theme.colors[theme.primaryColor][6]
+                    'orange',
                   to:
-                    theme_name != THEME_NAME.rainbow
-                      ? theme.colors[theme.primaryColor][4]
-                      : 'yellow',
+                    // theme_name != THEME_NAME.rainbow
+                    // ? theme.colors[theme.primaryColor][4]
+                    'yellow',
                   deg: 45,
                 }}
                 span
@@ -123,12 +109,7 @@ export const Hero = ({
                 {personalDetails.name}
               </Text>
             </Title>
-            <Badge
-              size='xl'
-              my={8}
-              color={theme_name != THEME_NAME.rainbow ? '' : 'red'}
-              variant='outline'
-            >
+            <Badge size='xl' my={8} color={'red'} variant='outline'>
               {personalDetails.profile}
             </Badge>
           </Box>

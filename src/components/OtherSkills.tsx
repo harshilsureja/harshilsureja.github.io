@@ -1,20 +1,8 @@
-import React, { useEffect } from 'react';
-import {
-  Badge,
-  Box,
-  Center,
-  Container,
-  Group,
-  Space,
-  Title,
-} from '@mantine/core';
+import React from 'react';
+import { Badge, Center, Container, Group, Title } from '@mantine/core';
 import { IOtherSkill } from '../types';
-import { THEME_NAME } from '../enum';
-import { useSelector } from 'react-redux';
 
 export const OtherSkills = ({ otherSkills }: { otherSkills: IOtherSkill }) => {
-  const { theme_name } = useSelector((state: any) => state.themeReducer);
-  useEffect(() => {}, [theme_name]);
   return (
     <Container>
       <Center>
@@ -29,12 +17,7 @@ export const OtherSkills = ({ otherSkills }: { otherSkills: IOtherSkill }) => {
       </Center>
       <Group justify='center'>
         {otherSkills.cloud.map((ele: string) => (
-          <Badge
-            color={theme_name != THEME_NAME.rainbow ? '' : 'cyan'}
-            size='lg'
-            variant='light'
-            key={ele}
-          >
+          <Badge color={'cyan'} size='lg' variant='light' key={ele}>
             {ele}
           </Badge>
         ))}

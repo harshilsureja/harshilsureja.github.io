@@ -1,21 +1,12 @@
 import '@mantine/core/styles.css';
-// import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import {
-  // MantineColorScheme,
-  MantineProvider,
-  // localStorageColorSchemeManager,
-  // useMantineTheme,
-} from '@mantine/core';
-import { wrapper } from '../src/store/store';
-// import { useState } from 'react';
-// import { updateColorSchema } from '../src/store/reducers/slice/theme';
-// import { useDispatch } from 'react-redux';
+import { MantineProvider, localStorageColorSchemeManager } from '@mantine/core';
 
 function App({ Component, pageProps }: AppProps) {
   // const dispatch = useDispatch();
-  // const [colorScheme, setColorScheme] = useState<MantineColorScheme>('light');
+  // const theme = createTheme({ primaryColor: 'green' });
+  // const theme = useMantineTheme();
 
   // const toggleColorScheme = (value?: MantineColorScheme) => {
   //   const nextColorScheme =
@@ -28,6 +19,7 @@ function App({ Component, pageProps }: AppProps) {
   // const swatches: string[] = Object.keys(theme.colors).filter((color) => {
   //   return !ignoreColors.includes(color) && theme.colors[color][5];
   // });
+
   return (
     <>
       <Head>
@@ -37,16 +29,16 @@ function App({ Component, pageProps }: AppProps) {
           content='minimum-scale=1, initial-scale=1, width=device-width'
         /> */}
       </Head>
-        <MantineProvider
-        // defaultColorScheme='dark'
-          // theme={{
-          //   primaryColor: swatches[Math.floor(Math.random() * swatches.length)],
-          // }}
-        >
-          <Component {...pageProps} />
-        </MantineProvider>
+      <MantineProvider
+      // theme={{
+      //   primaryColor: swatches[Math.floor(Math.random() * swatches.length)],
+      // }}
+      // theme={{ theme }}
+      >
+        <Component {...pageProps} />
+      </MantineProvider>
     </>
   );
 }
 
-export default wrapper.withRedux(App);
+export default App;

@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Box,
   Center,
   Container,
   Text,
@@ -10,7 +11,7 @@ import {
 
 export const About = ({ about }: { about: string }) => {
   const theme = useMantineTheme();
-  const schema = useMantineColorScheme();
+  const { colorScheme } = useMantineColorScheme();
   return (
     <Container>
       <Center>
@@ -19,12 +20,12 @@ export const About = ({ about }: { about: string }) => {
         </Title>
       </Center>
       <Center>
-        <Text
+        <Box
           w={'50%'}
           miw={300}
           style={{
             background:
-              schema.colorScheme === 'dark'
+              colorScheme === 'dark'
                 ? theme.colors.dark[6]
                 : theme.colors.gray[0],
             textAlign: 'justify',
@@ -32,8 +33,8 @@ export const About = ({ about }: { about: string }) => {
             borderRadius: theme.radius.md,
           }}
         >
-          {about}
-        </Text>
+          <Text>{about}</Text>
+        </Box>
       </Center>
     </Container>
   );

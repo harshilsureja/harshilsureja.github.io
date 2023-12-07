@@ -10,6 +10,7 @@ export default class _Document extends Document {
     return (
       <Html>
         <Head />
+        <title>Harshil Sureja - Resume</title>
         <body>
           <Main />
           <NextScript />

@@ -10,15 +10,10 @@ import {
   em,
 } from '@mantine/core';
 import { ICollege, IEduction } from '../types';
-import { THEME_NAME } from '../enum';
-import { useSelector } from 'react-redux';
 import { useMediaQuery } from '@mantine/hooks';
 
 export const Education = ({ education }: { education: IEduction }) => {
-  const { theme_name } = useSelector((state: any) => state.themeReducer);
-  useEffect(() => {}, [theme_name]);
   const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
-
   return (
     <Container>
       <Center>
@@ -32,16 +27,13 @@ export const Education = ({ education }: { education: IEduction }) => {
           bulletSize={16}
           lineWidth={4}
           maw={isMobile ? '90%' : '100%'}
-          color={theme_name != THEME_NAME.rainbow ? '' : 'red'}
+          color={'red'}
         >
           {education.colleges.map((ele: ICollege) => (
             <Timeline.Item
               title={
                 <Group align={'center'} gap={'sm'}>
-                  <Badge
-                    color={theme_name != THEME_NAME.rainbow ? '' : 'red'}
-                    variant='light'
-                  >
+                  <Badge color={'red'} variant='light'>
                     {ele.courseTag}
                   </Badge>
                   <Text mx={8} fz='sm' c='dimmed'>

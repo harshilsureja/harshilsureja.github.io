@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Anchor,
   Badge,
@@ -16,11 +16,9 @@ import {
   PROJECT_STATUS,
   PROJECT_STATUS_BADGE_COLOR,
   STAIN_VARIANT,
-  THEME_NAME,
 } from '../enum';
 import { Stain } from './Stain';
-import { useSelector } from 'react-redux';
-import { Fira_Code } from '@next/font/google';
+import { Fira_Code } from 'next/font/google';
 import { useMediaQuery } from '@mantine/hooks';
 
 const FiraCode = Fira_Code({
@@ -34,10 +32,7 @@ export const PersonalProjects = ({
 }: {
   personalProjects: IPersonalProjects;
 }) => {
-  const { theme_name } = useSelector((state: any) => state.themeReducer);
-  useEffect(() => {}, [theme_name]);
   const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
-
   return (
     <Container>
       <Center>
@@ -53,7 +48,7 @@ export const PersonalProjects = ({
         radius={'50%'}
         ml={{ base: '0', sm: '512px' }}
         mt={{ base: '0', sm: '-48px' }}
-        color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
+        color={'grape'}
         variant={STAIN_VARIANT.projects}
       />
       <Center>
@@ -69,16 +64,13 @@ export const PersonalProjects = ({
           bulletSize={16}
           lineWidth={4}
           maw={isMobile ? '90%' : '70%'}
-          color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
+          color={'grape'}
         >
           {personalProjects.projects.map((ele: IProject, i: number) => (
             <Timeline.Item
               title={
                 <Group align={'center'} gap={'sm'}>
-                  <Badge
-                    color={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
-                    variant='light'
-                  >
+                  <Badge color={'grape'} variant='light'>
                     {ele.stack}
                   </Badge>
                   <Text fz='sm' c='dimmed'>
@@ -89,11 +81,7 @@ export const PersonalProjects = ({
               key={i}
             >
               <Text>{ele.description}</Text>
-              <Anchor
-                href={ele?.link}
-                target='_blank'
-                c={theme_name != THEME_NAME.rainbow ? '' : 'grape'}
-              >
+              <Anchor href={ele?.link} target='_blank' c={'grape'}>
                 {ele?.link}
               </Anchor>
               <Group align={'center'} mt={'sm'} gap={'md'}>

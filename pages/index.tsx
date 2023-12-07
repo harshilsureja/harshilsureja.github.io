@@ -1,7 +1,7 @@
 import Head from 'next/head';
 // import styles from '../styles/Home.module.css';
 import About from '../src/components/About';
-import { Flex, LoadingOverlay } from '@mantine/core';
+import { Flex } from '@mantine/core';
 import Hero from '../src/components/Hero';
 import Education from '../src/components/Education';
 import WorkExperience from '../src/components/WorkExperience';
@@ -11,35 +11,17 @@ import OtherSkills from '../src/components/OtherSkills';
 import Languages from '../src/components/Languages';
 import Quote from '../src/components/Quote';
 import Contact from '../src/components/Contact';
-import { fetchResume } from '../src/store/actions/resume.action';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { data } from '../src/data/harshil-sureja-resume-data';
 
 function Home() {
-  const dispatch: any = useDispatch();
-  const ResumeData = useSelector((state: any) => state.resumeReducer);
-  const { loading, error, data } = ResumeData;
-
-  useEffect(() => {
-    dispatch(fetchResume());
-  }, []);
-
   return (
     <>
       <Head>
-        <title>Harshil Sureja - Resume </title>
+        <title>Harshil Sureja - Resume</title>
         <meta name='description' content='Harshil Sureja - Resume' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Flex
-        // justify={'center'}
-        // align={'center'}
-        direction={'column'}
-        gap={64}
-        p={16}
-      >
-        {/* {loading && <Loader />} */}
-        <LoadingOverlay visible={loading} overlayProps={{blur:4}} />
+      <Flex direction={'column'} gap={64} p={16}>
         {data && (
           <>
             <Hero personalDetails={data.personalDetails} />
@@ -58,15 +40,5 @@ function Home() {
     </>
   );
 }
-
-// const mapStateToProps = (state: any) => ({
-//   resumeData: state.resumeData,
-// });
-
-// const mapDispatchToProps = (dispatch: any) => ({
-//   fetchResume: () => dispatch(fetchResume()),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 export default Home;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Badge,
   Center,
@@ -10,8 +10,6 @@ import {
   em,
 } from '@mantine/core';
 import { IJob, IWorkExperience } from '../types';
-import { THEME_NAME } from '../enum';
-import { useSelector } from 'react-redux';
 import { useMediaQuery } from '@mantine/hooks';
 
 export const WorkExperience = ({
@@ -19,10 +17,7 @@ export const WorkExperience = ({
 }: {
   workExperience: IWorkExperience;
 }) => {
-  const { theme_name } = useSelector((state: any) => state.themeReducer);
-  useEffect(() => {}, [theme_name]);
   const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
-
   return (
     <Container>
       <Center>
@@ -36,16 +31,13 @@ export const WorkExperience = ({
           bulletSize={16}
           lineWidth={4}
           maw={isMobile ? '90%' : '70%'}
-          color={theme_name != THEME_NAME.rainbow ? '' : 'pink'}
+          color={'pink'}
         >
           {workExperience.jobs.map((ele: IJob, i: number) => (
             <Timeline.Item
               title={
                 <Group align={'center'} gap={'sm'}>
-                  <Badge
-                    color={theme_name != THEME_NAME.rainbow ? '' : 'pink'}
-                    variant='light'
-                  >
+                  <Badge color={'pink'} variant='light'>
                     {ele.position}
                   </Badge>
                   <Text mx={8} fz='sm' c='dimmed'>

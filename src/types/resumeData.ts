@@ -9,14 +9,12 @@ import {
 } from './index';
 
 export interface IData {
-  data: {
-    personalDetails: IPersonalDetails;
-    education: IEduction;
-    workExperience: IWorkExperience;
-    personalProjects: IPersonalProjects;
-    techSkill: ITechSkill;
-    otherSkill: IOtherSkill;
-    languages: string[];
-    contactDetails: IContact[];
-  };
+  personalDetails: IPersonalDetails;
+  education: IEduction;
+  workExperience: IWorkExperience;
+  personalProjects: IPersonalProjects;
+  techSkill: ITechSkill;
+  otherSkill: IOtherSkill;
+  languages: string[];
+  contactDetails: IContact[];
 }
