@@ -37,8 +37,11 @@ const data: IData = {
       {
         name: 'AllianceTek',
         position: 'Full-Stack developer',
-        description:
-          'I specialized in backend development using Node.js, while handling frontend tasks with React, AngularJS, and Next.js.',
+        description: `I specialized in backend development using Node.js, while handling frontend tasks with React, AngularJS, and Next.js.
+I have completed three projects at Alliancetek: two in Node.js and one in Angular.js.
+1.) The first project is a data tracking application that identifies similar images while adhering to HIPAA compliance using Node.js.
+2.) The second project involves an online contest platform where I participated, along with managing the merchandise store.
+3.) The third project is a HIPAA-compliant ERP system developed in Angular.js.`,
         duration: 'Running',
         year: {
           start: 2022,
@@ -73,6 +76,15 @@ const data: IData = {
   personalProjects: {
     tagLine: '{{codding}} is belong from Array.hobbies',
     projects: [
+      {
+        name: 'AI Regex',
+        stack: 'Next Js',
+        description:
+          'AI-driven regular expression generator. Use our AI-powered regex generator to make regular expressions easy. Simplify coding, boost efficiency, and become a regex pro.',
+        link: 'https://airegex.pro',
+        year: 2024,
+        status: 1,
+      },
       {
         name: 'EnlightUp',
         stack: 'PERN Stack',
@@ -128,7 +140,7 @@ const data: IData = {
   },
 
   techSkill: {
-    frontEnd: ['React', 'Next.js'],
+    frontEnd: ['React', 'Next.js', 'Angular Js'],
     backEnd: ['Node.js', 'koa'],
     database: ['Postgres', 'MongoDB', 'MySQL'],
   },
