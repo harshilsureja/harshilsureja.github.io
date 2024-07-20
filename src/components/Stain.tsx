@@ -8,7 +8,7 @@ export const Stain = ({
   variant,
   ...props
 }: any) => {
-  const theme = useMantineTheme()
+  const theme = useMantineTheme();
   const setVariant = () => {
     switch (variant) {
       case 1:
@@ -154,7 +154,7 @@ export const Stain = ({
         transform: `translate(${transform})`,
         position: 'absolute',
         zIndex: -1,
-        ...setVariant()
+        ...setVariant(),
       }}
       {...props}
     ></Box>

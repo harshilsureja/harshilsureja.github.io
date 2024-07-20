@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   ActionIcon,
   Anchor,
@@ -13,12 +13,9 @@ import {
 import { Stain } from './Stain';
 import { IContact } from '../types';
 import { contactList } from '../types/contact';
-import { STAIN_VARIANT, THEME_NAME } from '../enum';
-import { useSelector } from 'react-redux';
+import { STAIN_VARIANT } from '../enum';
 
 export const Contact = ({ contactDetails }: { contactDetails: IContact[] }) => {
-  const { theme_name } = useSelector((state: any) => state.themeReducer);
-  useEffect(() => {}, [theme_name]);
   return (
     <Container>
       <Stain
@@ -29,16 +26,15 @@ export const Contact = ({ contactDetails }: { contactDetails: IContact[] }) => {
         ml={{ base: '0', sm: '448px' }}
         mt={{ base: '0', sm: '80px' }}
         radius={'50%'}
-        color={theme_name != THEME_NAME.rainbow ? '' : 'green'}
+        color={'green'}
         variant={STAIN_VARIANT.contact}
       />
       <Center>
-      <Title order={3} mb={'md'}>
-        Contact
-      </Title></Center>
-      <Group
-        justify={'center'}
-      >
+        <Title order={3} mb={'md'}>
+          Contact
+        </Title>
+      </Center>
+      <Group justify={'center'}>
         {contactDetails.map((ele: IContact, i: number) => {
           const Icon = contactList[ele.platform];
           return (
@@ -46,7 +42,7 @@ export const Contact = ({ contactDetails }: { contactDetails: IContact[] }) => {
               <Card
                 radius={'md'}
                 style={{
-                  backgroundColor:`light-dark(
+                  backgroundColor: `light-dark(
                     rgba(var(--mantine-color-gray-0),0.2),
                     rgba(var(--mantine-color-dark-6),0.2)
                   )`,
@@ -59,7 +55,7 @@ export const Contact = ({ contactDetails }: { contactDetails: IContact[] }) => {
                     size={'xl'}
                     radius='md'
                     variant='light'
-                    color={theme_name != THEME_NAME.rainbow ? '' : 'green'}
+                    color={'green'}
                   >
                     <Icon size={24} />
                   </ActionIcon>
@@ -68,10 +64,7 @@ export const Contact = ({ contactDetails }: { contactDetails: IContact[] }) => {
                       {ele.platform}
                     </Text>
                     <Text>
-                      <Anchor
-                        href={ele.link}
-                        c={theme_name != THEME_NAME.rainbow ? '' : 'green'}
-                      >
+                      <Anchor href={ele.link} c={'green'}>
                         {ele.text}
                       </Anchor>
                     </Text>
